@@ -39,6 +39,7 @@ npm install package-name
 - Github: [@Bradley-Hill](https://github.com/Bradley-Hill)
 - Instagram: [@Bradley-Hill](https://www.instagram.com/hill.bradley/)
 - Threads: [@Bradley-Hill](https://www.threads.net/@hill.bradley)
+- Twitter: [@KingmObYojimbo](https://twitter.com/KingmObYojimbo)
 
 
 ## ➤ License
