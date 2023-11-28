@@ -16,4 +16,15 @@ describe('LoginForm', () => {
     const button = wrapper.find('button')
     expect(button.exists()).toBe(true)
   })
+  test('shows error when invalid email is entered', async () => {
+    const wrapper = mount(LoginForm)
+    const input = wrapper.find('input[type="email"]')
+
+    await input.setValue('invalid email')
+
+    await input.trigger('input')
+
+    const errorMessage = wrapper.find('.error-message')
+    expect(errorMessage.exists()).toBe(true)
+  })
 })
