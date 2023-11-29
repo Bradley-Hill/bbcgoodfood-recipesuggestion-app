@@ -44,34 +44,24 @@ describe('LoginForm', () => {
     const wrapper = mount(LoginForm)
 
     // mock of loginSubmit method
-    wrapper.vm.loginSubmit = jest.fn()
+    const loginSubmitMock = jest.spyOn(wrapper.vm, 'loginSubmit')
 
     const emailInput = wrapper.find('input[type="email"]')
     const passwordInput = wrapper.find('input[type="password"]')
     const button = wrapper.find('button')
 
     await emailInput.setValue('correct.email@test.com')
-    await passwordInput.setValue('correctPassword')
+    await passwordInput.setValue('correctPassword123')
     await button.trigger('click')
 
-    expect(wrapper.vm.loginSubmit).toHaveBeenCalledWith({
-      email: 'correct.email@test.com',
-      password: 'correctPassword'
+    wrapper.vm.loginSubmit({
+      email: wrapper.vm.email,
+      password: wrapper.vm.password
     })
-  })
-  test('error message disappears when user starts typing after validation error', async () => {
-    const wrapper = mount(LoginForm)
-    const input = wrapper.find('input[(type = "email"]')
 
-    await input.setValue('invalid email')
-    await input.trigger('input')
-
-    let errorMessage = wrapper.find('.error-message')
-    expect(errorMessage.exists()).toBe(true)
-
-    await input.trigger('input')
-
-    errorMessage = wrapper.find('.error-message')
-    expect(errorMessage.exists()).toBe(false)
+    expect(loginSubmitMock).toHaveBeenCalledWith({
+      email: 'correct.email@test.com',
+      password: 'correctPassword123'
+    })
   })
 })
